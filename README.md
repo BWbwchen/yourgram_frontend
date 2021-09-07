@@ -1,24 +1,12 @@
-# yourgram_frontend
+# Yourgram frontend
+
+This is yourgram frontend. This is project is helped by [uzirthapa](https://github.com/uzirthapa)'s outstanding project [instagram-clone](https://github.com/uzirthapa/instagram-clone)
+
 
 ## Project setup
 ```
 yarn install
-```
-
-### Compiles and hot-reloads for development
-```
 yarn serve
-```
-
-### Compiles and minifies for production
-```
 yarn build
-```
-
-### Lints and fixes files
-```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
