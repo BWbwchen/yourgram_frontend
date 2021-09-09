@@ -27,15 +27,37 @@
 export default {
   data() {
     return {
-      feedImages: [
-        "https://images.unsplash.com/photo-1502429892517-ebe1510442a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-        "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1055&q=80",
-        "https://images.unsplash.com/photo-1584701782235-beff0661e16a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80",
-        "https://images.unsplash.com/photo-1492056128351-09fb7a99969e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=562&q=80",
-        "https://images.unsplash.com/photo-1495954484750-af469f2f9be5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-        "https://images.unsplash.com/photo-1515966097209-ec48f3216288?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-      ]
+      serverURL: process.env.VUE_APP_URL,
+      feedImages: [],
+      //User: "tim.chenbw@gmail.com",
+      User: "testUser",
     };
+  },
+  async created() {
+    console.log("Function call start!")
+    // send request 
+    const data = {
+        "UserID": this.User,
+    }
+    const response = await fetch(this.serverURL+'/v1/img/getImage', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          "Content-type": "application/json",
+          //"Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(data)
+    });
+    const result = await response.json()
+    if (response.status != 200) {
+        // login fail
+        this.feedImages = []
+    } else {
+        // work !
+        console.log(result)
+        this.feedImages = result.ImgURLs
+    }
+    console.log("Function call finish!")
   }
 };
 </script>

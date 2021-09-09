@@ -50,7 +50,6 @@
 import ProfilePage from "./pages/ProfilePage";
 import MainNav from "./components/MainNav";
 import ProfileRightNav from "./components/ProfileRightNav";
-// import HelloWorld from "./components/HelloWorld";
 
 export default {
   name: "App",

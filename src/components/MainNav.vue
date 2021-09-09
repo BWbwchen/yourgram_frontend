@@ -26,7 +26,7 @@
 
             <!-- </v-card> -->
 
-            <div class="mt-4 title">Bo Wei Chen</div>
+            <div class="mt-4 title">{{Name}}</div>
             <div class="mt-1 subtitle-2 grey--text">Hsin-Chu, Taiwan</div>
             <div class="mt-5">
               <v-layout>
@@ -110,7 +110,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      Name: "Bo Wei Chen",
+    }
+  },
+};
 </script>
 
 <style>
