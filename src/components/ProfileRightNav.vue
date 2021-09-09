@@ -10,7 +10,7 @@
       </v-card>
     </v-layout>
     <v-layout class="mt-6">
-      <div class="title">Bo Wei Chen</div>
+      <div class="title">{{ Name }}</div>
     </v-layout>
     <v-layout>
       <v-flex>
@@ -47,7 +47,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      Name: "Bo Wei Chen"
+    }
+  },
+};
 </script>
 
 <style>
