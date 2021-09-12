@@ -77,7 +77,7 @@
       passwordRules: [
         v => !!v || 'Password is required', 
       ],
-      login_status: 'Heelo',
+      login_status: '',
     }),
     methods: {
       login(){
@@ -88,17 +88,14 @@
           Name: this.username,
           Password: this.password
         })
-        .catch(function (error) {
+        .catch(function () {
           // handle error
-          console.log("login fail");
-          console.log(error);
           that.reset("Email, username, or password is wrong")
         })
         .then(function (response) {
           // handle success
-          console.log(response);
-          console.log("login success");
           localStorage.setItem('token', 'ImLogin')
+          localStorage.setItem('jwt', response.data.JWTToken)
           localStorage.setItem('user', that.username || that.username)
           that.$router.push('/');
         })
