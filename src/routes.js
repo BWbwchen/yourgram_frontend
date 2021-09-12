@@ -1,16 +1,15 @@
-import App from './App.vue';
-//import Login from './components/Login.vue';
+import Login from './components/Login.vue';
 import MainPage from './components/MainPage.vue';
 
 export const routes = [
   {
     path: '/login',
-    component: MainPage,
+    component: Login,
   },
   {
     path: '/',
     components: {
-      default: App,
+      default: MainPage,
     }
   },
   {

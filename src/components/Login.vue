@@ -1,33 +1,90 @@
 <template>
-  <div>
+<div>
+	<v-form v-model="valid">
+    <v-container>
     <h1>Login Page</h1>
-    <v-form @submit.prevent="login">
-      <label>User Name</label>
-      <input type="text" v-model="userName" required>
-      <br>
-      <label>Password</label>
-      <input type="password" v-model="password" required>
-      <br>
-      <button type="submit">Log In</button>
-    </v-form>
-  </div>
+
+      <v-row>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="email"
+            :rules="emailRules"
+            label="E-mail"
+            required
+          ></v-text-field>
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="username"
+            label="Name"
+          ></v-text-field>
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="password"
+            :rules="passwordRules"
+            label="Password"
+            required
+          ></v-text-field>
+        </v-col>
+      </v-row>
+
+    <v-btn
+      :disabled="!valid"
+      color="success"
+      class="mr-4"
+      @click="login"
+    >
+      Login
+    </v-btn>
+      
+    </v-container>
+	</v-form>
+</div>
 </template>
+
 <script>
   export default {
-    data () {
-      return {
-        userName: '',
-        password: '',
-      }
-    },
+	data: () => ({
+      valid: false,
+      username: '',
+      nameRules: [
+        v => !!v || 'Name is required',
+      ],
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+/.test(v) || 'E-mail must be valid',
+      ],
+      password: '',
+      passwordRules: [
+        v => !!v || 'Password is required', 
+      ]
+    }),
     methods: {
       login(){
         //write login authencation logic here!
-        if( this.userName == 'abcd' && this.password == '1234' ){
+        if( this.email == 'abcd@1234' && this.password == '1234' ){
+            console.log("login success")
           localStorage.setItem('token', 'ImLogin')
           this.$router.push('/');
         } else{
-          alert('login failed')
+            console.log("login failed")
         }
       }
     } 
