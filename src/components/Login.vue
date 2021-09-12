@@ -53,12 +53,14 @@
       Login
     </v-btn>
       
+    <h1>{{ login_status }}</h1>
     </v-container>
 	</v-form>
 </div>
 </template>
 
 <script>
+  const axios = require('axios');
   export default {
 	data: () => ({
       valid: false,
@@ -74,18 +76,38 @@
       password: '',
       passwordRules: [
         v => !!v || 'Password is required', 
-      ]
+      ],
+      login_status: 'Heelo',
     }),
     methods: {
       login(){
         //write login authencation logic here!
-        if( this.email == 'abcd@1234' && this.password == '1234' ){
-            console.log("login success")
+        let that = this 
+        axios.post(process.env.VUE_APP_URL+'/v1/account/auth', {
+          Email: this.email,
+          Name: this.username,
+          Password: this.password
+        })
+        .catch(function (error) {
+          // handle error
+          console.log("login fail");
+          console.log(error);
+          that.reset("Email, username, or password is wrong")
+        })
+        .then(function (response) {
+          // handle success
+          console.log(response);
+          console.log("login success");
           localStorage.setItem('token', 'ImLogin')
-          this.$router.push('/');
-        } else{
-            console.log("login failed")
-        }
+          localStorage.setItem('user', that.username || that.username)
+          that.$router.push('/');
+        })
+      },
+      reset(status_message) {
+        this.login_status = status_message
+        this.username = ""
+        this.email = ""
+        this.password = ""
       }
     } 
   }
