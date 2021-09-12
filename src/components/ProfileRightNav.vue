@@ -50,7 +50,7 @@
 export default {
   data() {
     return {
-      Name: "Bo Wei Chen"
+      Name: localStorage.getItem('user') || "Nop"
     }
   },
 };
