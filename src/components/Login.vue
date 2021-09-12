@@ -1,6 +1,6 @@
 <template>
 <div>
-	<v-form v-model="valid">
+	<v-form v-model="valid" @submit.prevent="login">
     <v-container>
     <h1>Login Page</h1>
 
@@ -39,6 +39,7 @@
             v-model="password"
             :rules="passwordRules"
             label="Password"
+            type="password"
             required
           ></v-text-field>
         </v-col>
@@ -48,7 +49,7 @@
       :disabled="!valid"
       color="success"
       class="mr-4"
-      @click="login"
+      type="submit"
     >
       Login
     </v-btn>
