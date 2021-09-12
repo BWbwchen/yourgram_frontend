@@ -36,17 +36,13 @@ export default {
   async created() {
     console.log("Function call start!")
     // send request 
-    const data = {
-        "UserID": this.User,
-    }
-    const response = await fetch(this.serverURL+'/v1/img/getImage', {
-        method: 'POST',
+    const response = await fetch(this.serverURL+'/v1/img/getImage/'+this.User, {
+        method: 'GET',
         mode: 'cors',
         headers: {
           "Content-type": "application/json",
           //"Access-Control-Allow-Origin": "*",
         },
-        body: JSON.stringify(data)
     });
     const result = await response.json()
     if (response.status != 200) {
