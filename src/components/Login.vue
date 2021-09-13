@@ -70,8 +70,8 @@
 </template>
 
 <script>
-  const axios = require('axios');
-  export default {
+const axios = require('axios');
+export default {
 	data: () => ({
       valid: false,
       username: '',
