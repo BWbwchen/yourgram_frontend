@@ -1,13 +1,10 @@
 <template>
 <div>
-	<v-form v-model="valid" @submit.prevent="login">
-    <v-container>
-    <h1>Login Page</h1>
-
+<v-container class="d-flex align-center justify-center">
+	<v-form v-model="valid" @submit.prevent="login" >
+    <h1 >Login Page</h1>
       <v-row>
         <v-col
-          cols="12"
-          md="4"
         >
           <v-text-field
             v-model="email"
@@ -20,8 +17,6 @@
 
       <v-row>
         <v-col
-          cols="12"
-          md="4"
         >
           <v-text-field
             v-model="username"
@@ -32,8 +27,6 @@
 
       <v-row>
         <v-col
-          cols="12"
-          md="4"
         >
           <v-text-field
             v-model="password"
@@ -64,8 +57,8 @@
     </v-btn>
       
     <h1>{{ login_status }}</h1>
-    </v-container>
 	</v-form>
+</v-container>
 </div>
 </template>
 
@@ -124,14 +117,19 @@ export default {
           Name: this.username,
           Password: this.password
         })
-        .catch(function () {
-          // handle error
-          that.reset("Email, username, or password have been registed!")
-        })
         .then(function () {
           // handle success
-          that.reset("register success! \n Please Login again")
+          let msg = `register success!\nPlease Login again`
+          console.log(msg)
+          that.reset(msg)
         })
+        .catch(function () {
+          // handle error
+          let msg = "Email, username, or password have been registed!";
+          console.log(msg)
+          that.reset(msg)
+        })
+        
       }
     } 
   }

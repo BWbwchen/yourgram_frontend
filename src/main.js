@@ -15,7 +15,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next)=>{
-  const isLogin = localStorage.getItem('token') == 'ImLogin' ;
+  const isLogin = localStorage.getItem('jwt');
   if( isLogin ){
     next();
   } else {
