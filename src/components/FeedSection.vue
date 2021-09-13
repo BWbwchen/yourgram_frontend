@@ -30,7 +30,7 @@ export default {
       serverURL: process.env.VUE_APP_URL,
       feedImages: [],
       //User: "tim.chenbw@gmail.com",
-      User: "testUser",
+      User: localStorage.getItem("user"),
     };
   },
   async created() {
