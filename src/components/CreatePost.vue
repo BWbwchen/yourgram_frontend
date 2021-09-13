@@ -42,11 +42,11 @@ export default ({
       if(this.files){
         formData.append("file", this.files, this.files.name)
 
-        console.log("formdata: ", formData)
         axios.post(process.env.VUE_APP_URL+'/v1/img/upload', formData,
         { 
           headers: { 
-              'Content-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data',
+            'Authorization': "Bearer " + localStorage.getItem('jwt')
           } 
         }).then( () => {
           that.$router.push('/');
