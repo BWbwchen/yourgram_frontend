@@ -53,6 +53,15 @@
     >
       Login
     </v-btn>
+
+    <v-btn
+      :disabled="!valid"
+      color="warning"
+      class="mr-4"
+      @click="register"
+    >
+      Register
+    </v-btn>
       
     <h1>{{ login_status }}</h1>
     </v-container>
@@ -106,6 +115,23 @@
         this.username = ""
         this.email = ""
         this.password = ""
+      },
+
+      register() {
+        let that = this 
+        axios.post(process.env.VUE_APP_URL+'/v1/account/create', {
+          Email: this.email,
+          Name: this.username,
+          Password: this.password
+        })
+        .catch(function () {
+          // handle error
+          that.reset("Email, username, or password have been registed!")
+        })
+        .then(function () {
+          // handle success
+          that.reset("register success! \n Please Login again")
+        })
       }
     } 
   }
