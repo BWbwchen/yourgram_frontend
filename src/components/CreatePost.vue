@@ -15,6 +15,11 @@
     @click="uploadFile"
   >Upload</v-btn>
   <h1>{{ status }}</h1>
+  <v-btn 
+    color="primary" 
+    text 
+    @click="back"
+  >Cancel</v-btn>
 
 </div>
 </template>
@@ -54,6 +59,9 @@ export default ({
           console.log('there are no files.')
       }
       this.files = false
+    },
+    back() {
+      this.$router.push('/');
     }
   }
 })

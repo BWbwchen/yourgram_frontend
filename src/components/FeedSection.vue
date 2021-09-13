@@ -15,7 +15,7 @@
     </v-layout>
     <v-row class="mt-5">
       <v-col v-for="(image, i) in feedImages" :key="i">
-        <v-card elevation="12" height="230" width="210" color="blue" class="mr-4">
+        <v-card elevation="12" height="230" width="210" color="red lighten-5" class="mr-4">
           <v-img height="230" :src="image"></v-img>
         </v-card>
       </v-col>
