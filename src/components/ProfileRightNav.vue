@@ -50,7 +50,7 @@
 export default {
   data() {
     return {
-      Name: localStorage.getItem('user') || "Nop"
+      Name: localStorage.getItem('userName') || "Nop"
     }
   },
 };

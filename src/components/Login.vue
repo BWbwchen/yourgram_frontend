@@ -99,7 +99,8 @@ export default {
           // handle success
           localStorage.setItem('token', 'ImLogin')
           localStorage.setItem('jwt', response.data.JWTToken)
-          localStorage.setItem('user', that.email)
+          localStorage.setItem('email', response.data.Email)
+          localStorage.setItem('userName', response.data.Name)
           that.$router.push('/');
         })
       },
